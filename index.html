@@ -58,7 +58,7 @@ placeholder="駅名・案件名で検索">
 
 <script>
 
-const projects = [
+let projects = [
 
 {
 name:"渋谷駅桜丘地区再開発",
@@ -126,7 +126,15 @@ document
 render(e.target.value);
 });
 
-render();
+fetch("data.json")
+.then(response => response.json())
+.then(data => {
+
+  projects = data;
+
+  render();
+
+});
 
 </script>
 
