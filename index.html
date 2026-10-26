@@ -1,41 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>全国再開発DB</title>
+
 <style>
 body{
-  font-family:sans-serif;
-  max-width:800px;
-  margin:auto;
-  padding:20px;
+    font-family:sans-serif;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+    background:#f5f7fa;
 }
+
 h1{
-  color:#0066cc;
+    color:#0066cc;
 }
+
+#search{
+    width:100%;
+    padding:12px;
+    font-size:16px;
+    margin-bottom:20px;
+}
+
 .card{
-  border:1px solid #ddd;
-  padding:10px;
-  margin:10px 0;
-  border-radius:8px;
+    background:white;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:15px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+.station{
+    color:#666;
+}
+
+.year{
+    color:#0066cc;
+    font-weight:bold;
 }
 </style>
 </head>
+
 <body>
 
-<h1>全国再開発DB</h1>
+<h1>🏗 全国再開発DB</h1>
 
-<div class="card">
-<h3>渋谷駅桜丘地区再開発</h3>
-<p>最寄駅：渋谷駅</p>
-<p>完成予定：2027年</p>
-</div>
+<input
+id="search"
+type="text"
+placeholder="駅名・案件名で検索">
 
+<div id="results"></div>
+
+<script>
+
+const projects = [
+
+{
+name:"渋谷駅桜丘地区再開発",
+station:"渋谷",
+completion:"2027年"
+},
+
+{
+name:"中野駅新北口再開発",
+station:"中野",
+completion:"2028年"
+},
+
+{
+name:"品川駅西口再開発",
+station:"品川",
+completion:"2030年"
+},
+
+{
+name:"池袋駅東口再開発",
+station:"池袋",
+completion:"2029年"
+},
+
+{
+name:"立川駅北口再開発",
+station:"立川",
+completion:"2028年"
+}
+
+];
+
+function render(keyword=""){
+
+const area =
+document.getElementById("results");
+
+const filtered =
+projects.filter(p =>
+p.name.includes(keyword)
+||
+p.station.includes(keyword)
+);
+
+area.innerHTML="";
+
+filtered.forEach(p=>{
+
+area.innerHTML += `
 <div class="card">
-<h3>中野駅新北口再開発</h3>
-<p>最寄駅：中野駅</p>
-<p>完成予定：2028年</p>
+<h3>${p.name}</h3>
+<p class="station">最寄駅：${p.station}</p>
+<p class="year">完成予定：${p.completion}</p>
 </div>
+`;
+
+});
+
+}
+
+document
+.getElementById("search")
+.addEventListener("input",(e)=>{
+render(e.target.value);
+});
+
+render();
+
+</script>
 
 </body>
 </html>
