@@ -111,7 +111,10 @@ filtered.forEach(p=>{
 area.innerHTML += `
 <div class="card">
 <h3>${p.name}</h3>
-<p class="station">最寄駅：${p.station}</p>
+<p>最寄駅：${p.station}</p>
+<p>所在地：${p.area || ""}</p>
+<p>事業者：${p.developer || ""}</p>
+<p>状況：${p.status || ""}</p>
 <p class="year">完成予定：${p.completion}</p>
 </div>
 `;
