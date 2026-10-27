@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://saketonvn2-web.github.io/redevelopment-db/sitemap.xml
