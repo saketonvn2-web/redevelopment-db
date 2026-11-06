@@ -3,40 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="google-site-verification" content="fCUKdl8bNoQ462COEZQlg9gx9g2S11lOO2Gmqyds32g" />
+<meta name="google-site-verification" content="fCUKdl8bNoQ462COEZQlg9gx9g2S11lOO2Gmqyds32g">
 <title>全国再開発DB｜東京・首都圏の再開発計画検索</title>
 
 <style>
 body{
-    font-family:sans-serif;
-    max-width:1000px;
-    margin:auto;
-    padding:20px;
-    background:#f5f7fa;
+  font-family:sans-serif;
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+  background:#f5f7fa;
 }
 
 h1{
-    color:#0066cc;
+  color:#0066cc;
 }
 
 #search{
-    width:100%;
-    padding:12px;
-    font-size:16px;
-    margin-bottom:20px;
+  width:100%;
+  padding:12px;
+  font-size:16px;
+  margin-bottom:20px;
 }
 
 .card{
-    background:white;
-    border-radius:10px;
-    padding:15px;
-    margin-bottom:15px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+  background:white;
+  border-radius:10px;
+  padding:15px;
+  margin-bottom:15px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
 }
 
 .year{
-    color:#0066cc;
-    font-weight:bold;
+  color:#0066cc;
+  font-weight:bold;
 }
 </style>
 </head>
@@ -64,7 +64,7 @@ placeholder="駅名・案件名で検索">
 
 let projects = [];
 
-function render(keyword="") {
+function render(keyword=""){
 
   const area =
   document.getElementById("results");
@@ -76,7 +76,7 @@ function render(keyword="") {
   );
 
   document.getElementById("count").innerText =
-    "検索結果：" + filtered.length + "件";
+  "検索結果：" + filtered.length + "件";
 
   area.innerHTML = "";
 
@@ -86,4 +86,45 @@ function render(keyword="") {
     <div class="card">
       <h3>${p.name}</h3>
       <p>最寄駅：${p.station}</p>
-      <p>
+      <p>所在地：${p.area || ""}</p>
+      <p>事業者：${p.developer || ""}</p>
+      <p>状況：${p.status || ""}</p>
+      <p>階数：${p.floors || ""}</p>
+      <p>高さ：${p.height || ""}</p>
+      <p>更新日：${p.updated || ""}</p>
+      <p class="year">完成予定：${p.completion}</p>
+    </div>
+    `;
+
+  });
+
+}
+
+document
+.getElementById("search")
+.addEventListener("input", (e) => {
+  render(e.target.value);
+});
+
+fetch("data.json")
+.then(response => response.json())
+.then(data => {
+
+  projects = data;
+
+  render();
+
+})
+.catch(error => {
+
+  console.error(error);
+
+  document.getElementById("results").innerHTML =
+  "<p>データの読み込みに失敗しました。</p>";
+
+});
+
+</script>
+
+</body>
+</html>
