@@ -34,10 +34,6 @@ h1{
     box-shadow:0 2px 6px rgba(0,0,0,0.1);
 }
 
-.station{
-    color:#666;
-}
-
 .year{
     color:#0066cc;
     font-weight:bold;
@@ -48,11 +44,13 @@ h1{
 <body>
 
 <h1>🏗 全国再開発DB</h1>
+
 <p>
 東京・神奈川・埼玉・千葉を中心とした
 再開発計画データベースです。
 駅名や案件名で検索できます。
 </p>
+
 <input
 id="search"
 type="text"
@@ -88,45 +86,4 @@ function render(keyword="") {
     <div class="card">
       <h3>${p.name}</h3>
       <p>最寄駅：${p.station}</p>
-      <p>所在地：${p.area || ""}</p>
-      <p>事業者：${p.developer || ""}</p>
-      <p>状況：${p.status || ""}</p>
-      <p>階数：${p.floors || ""}</p>
-      <p>高さ：${p.height || ""}</p>
-      <p>更新日：${p.updated || ""}</p>
-      <p class="year">完成予定：${p.completion}</p>
-    </div>
-    `;
-
-  });
-
-}
-
-document
-.getElementById("search")
-.addEventListener("input", (e) => {
-  render(e.target.value);
-});
-
-fetch("data.json")
-.then(response => response.json())
-.then(data => {
-
-  projects = data;
-
-  render();
-
-})
-.catch(error => {
-
-  console.error(error);
-
-  document.getElementById("results").innerHTML =
-  "<p>データの読み込みに失敗しました。</p>";
-
-});
-
-</script>
-
-</body>
-</html>
+      <p>
