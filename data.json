@@ -11,8 +11,31 @@
     "updated": "2026-10-26"
   },
   {
+    "name": "渋谷駅桜丘地区再開発",
+    "station": "渋谷",
+    "completion": "2027年"
+  },
+  {
     "name": "中野駅新北口再開発",
     "station": "中野",
     "completion": "2028年"
-  }
-]
+  },
+  {
+    "name": "品川駅西口地区再開発",
+    "station": "品川",
+    "completion": "2030年"
+  },
+  {
+    "name": "東京駅八重洲二丁目中地区再開発",
+    "station": "東京",
+    "completion": "2028年"
+  },
+  {
+    "name": "八重洲一丁目北地区再開発",
+    "station": "東京",
+    "completion": "2029年"
+  },
+  {
+    "name": "虎ノ門ヒルズ周辺再開発",
+    "station": "虎ノ門",
+    "completion": "
