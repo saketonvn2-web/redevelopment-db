@@ -24,9 +24,10 @@
   "url": "nakano.html"
 },
   {
-    "name": "品川駅西口地区再開発",
-    "station": "品川",
-    "completion": "2030年"
+  "name": "品川駅西口地区再開発",
+  "station": "品川",
+  "completion": "2030年",
+  "url": "shinagawa.html"
   },
   {
     "name": "東京駅八重洲二丁目中地区再開発",
@@ -34,9 +35,10 @@
     "completion": "2028年"
   },
   {
-    "name": "八重洲一丁目北地区再開発",
-    "station": "東京",
-    "completion": "2029年"
+  "name": "池袋駅西口地区再開発",
+  "station": "池袋",
+  "completion": "2029年",
+  "url": "ikebukuro.html"
   },
   {
     "name": "虎ノ門ヒルズ周辺再開発",
