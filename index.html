@@ -84,7 +84,11 @@ function render(keyword=""){
 
     area.innerHTML += `
     <div class="card">
-      <h3>${p.name}</h3>
+      <h3>
+<a href="${p.url || '#'}">
+${p.name}
+</a>
+</h3>
       <p>最寄駅：${p.station}</p>
       <p>所在地：${p.area || ""}</p>
       <p>事業者：${p.developer || ""}</p>
