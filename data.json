@@ -30,9 +30,10 @@
   "url": "shinagawa.html"
   },
   {
-    "name": "東京駅八重洲二丁目中地区再開発",
-    "station": "東京",
-    "completion": "2028年"
+  "name": "東京駅八重洲二丁目中地区再開発",
+  "station": "東京",
+  "completion": "2028年",
+  "url": "tokyo.html"
   },
   {
   "name": "池袋駅西口地区再開発",
