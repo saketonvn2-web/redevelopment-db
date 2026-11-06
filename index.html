@@ -64,78 +64,48 @@ placeholder="駅名・案件名で検索">
 
 <script>
 
-let projects = [
+let projects = [];
 
-{
-name:"渋谷駅桜丘地区再開発",
-station:"渋谷",
-completion:"2027年"
-},
+function render(keyword="") {
 
-{
-name:"中野駅新北口再開発",
-station:"中野",
-completion:"2028年"
-},
+  const area =
+  document.getElementById("results");
 
-{
-name:"品川駅西口再開発",
-station:"品川",
-completion:"2030年"
-},
+  const filtered =
+  projects.filter(p =>
+    p.name.includes(keyword) ||
+    p.station.includes(keyword)
+  );
 
-{
-name:"池袋駅東口再開発",
-station:"池袋",
-completion:"2029年"
-},
+  document.getElementById("count").innerText =
+    "検索結果：" + filtered.length + "件";
 
-{
-name:"立川駅北口再開発",
-station:"立川",
-completion:"2028年"
-}
+  area.innerHTML = "";
 
-];
+  filtered.forEach(p => {
 
-function render(keyword=""){
+    area.innerHTML += `
+    <div class="card">
+      <h3>${p.name}</h3>
+      <p>最寄駅：${p.station}</p>
+      <p>所在地：${p.area || ""}</p>
+      <p>事業者：${p.developer || ""}</p>
+      <p>状況：${p.status || ""}</p>
+      <p>階数：${p.floors || ""}</p>
+      <p>高さ：${p.height || ""}</p>
+      <p>更新日：${p.updated || ""}</p>
+      <p class="year">完成予定：${p.completion}</p>
+    </div>
+    `;
 
-const area =
-document.getElementById("results");
-
-const filtered =
-projects.filter(p =>
-p.name.includes(keyword)
-||
-p.station.includes(keyword)
-);
-
-area.innerHTML="";
-
-filtered.forEach(p=>{
-
-area.innerHTML += `
-<div class="card">
-<h3>${p.name}</h3>
-<p>最寄駅：${p.station}</p>
-<p>所在地：${p.area || ""}</p>
-<p>事業者：${p.developer || ""}</p>
-<p>状況：${p.status || ""}</p>
-<p>階数：${p.floors || ""}</p>
-<p>高さ：${p.height || ""}</p>
-<p>更新日：${p.updated || ""}</p>
-<p class="year">完成予定：${p.completion}</p>
-</div>
-`;
-
-});
+  });
 
 }
 
 document
 .getElementById("search")
-.addEventListener("input",(e)=>{
-render(e.target.value);
+.addEventListener("input", (e) => {
+  render(e.target.value);
 });
 
 fetch("data.json")
@@ -145,42 +115,15 @@ fetch("data.json")
   projects = data;
 
   render();
-function render(keyword=""){
 
-const area =
-document.getElementById("results");
+})
+.catch(error => {
 
-const filtered =
-projects.filter(p =>
-p.name.includes(keyword)
-||
-p.station.includes(keyword)
-);
+  console.error(error);
 
-document.getElementById("count").innerText =
-"検索結果：" + filtered.length + "件";
+  document.getElementById("results").innerHTML =
+  "<p>データの読み込みに失敗しました。</p>";
 
-area.innerHTML="";
-
-filtered.forEach(p=>{
-
-area.innerHTML += `
-<div class="card">
-<h3>${p.name}</h3>
-<p>最寄駅：${p.station}</p>
-<p>所在地：${p.area || ""}</p>
-<p>事業者：${p.developer || ""}</p>
-<p>状況：${p.status || ""}</p>
-<p>階数：${p.floors || ""}</p>
-<p>高さ：${p.height || ""}</p>
-<p>更新日：${p.updated || ""}</p>
-<p class="year">完成予定：${p.completion}</p>
-</div>
-`;
-
-});
-
-}
 });
 
 </script>
