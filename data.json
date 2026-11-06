@@ -1,5 +1,15 @@
 [
   {
+  "name":"渋谷駅桜丘地区再開発",
+  "station":"渋谷",
+  "completion":"2027年",
+  "area":"東京都渋谷区",
+  "developer":"東急不動産",
+  "status":"工事中",
+  "floors":"39階",
+  "height":"約180m",
+  "updated":"2026-10-26"
+}{
     "name": "渋谷駅桜丘地区再開発",
     "station": "渋谷",
     "completion": "2027年"
